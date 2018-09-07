@@ -10,7 +10,7 @@
 
 
     <name>w2k</name>
-    <description>w2k project for  send HTML to kindle with wechat</description>
+    <description>w2k project for send HTML to kindle with wechat</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -26,6 +26,12 @@
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.10.2</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -47,11 +53,11 @@
 
         <!-- https://mvnrepository.com/artifact/org.httpunit/httpunit -->
         <dependency>
-        <groupId>org.httpunit</groupId>
-        <artifactId>httpunit</artifactId>
-        <version>1.7.2</version>
-        <scope>test</scope>
-    </dependency>
+            <groupId>org.httpunit</groupId>
+            <artifactId>httpunit</artifactId>
+            <version>1.7.2</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.httpunit</groupId>
             <artifactId>httpunit</artifactId>
