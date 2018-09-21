@@ -13,13 +13,15 @@ public class HtmlService {
 
     public static void main(String[] args) throws Exception {
         // TODO Auto-generated method stub
-     //   String url = "https://mp.weixin.qq.com/s/FzH28t6P59b6HunWI8fajQ";
-        String url =  "https://mp.weixin.qq.com/s/WV3-13J-d5TDmirDDQ_VrQ";
+        //   String url = "https://mp.weixin.qq.com/s/FzH28t6P59b6HunWI8fajQ";
+
+        String url = "https://www.instagram.com/visualsofjulius/";
+        // String url =  "https://mp.weixin.qq.com/s/WV3-13J-d5TDmirDDQ_VrQ";
         //创建HttpClient
         CloseableHttpClient httpClient = HttpClients.createDefault();
 
         //目标网址
-       // String url = "http://www.oschina.net/";
+        // String url = "http://www.oschina.net/";
 
         //创建请求方法
         HttpGet httpGet = new HttpGet(url);
@@ -35,7 +37,7 @@ public class HtmlService {
                 //解析响应
                 String entity = EntityUtils.toString(httpResponse.getEntity());
                 System.out.println(entity);
-                saveHtml("d:/200.html",entity);
+                saveHtml("d:/200.html", entity);
             }
 
             EntityUtils.consume(httpResponse.getEntity());
