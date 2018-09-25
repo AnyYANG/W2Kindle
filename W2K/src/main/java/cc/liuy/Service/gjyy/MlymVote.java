@@ -12,6 +12,8 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -21,15 +23,17 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 @Service
+@Configuration
+@PropertySource("application.properties")
 public class MlymVote {
-    @Value("${path}")
-    static String path;
+ //   @Value("#{path}")
+    static String path="http://www.gjyunying.com/active/mlym/vote";
     public void voteConsumer(Long userid) {
         BiConsumer<Integer, Long> consumer = MlymVote::vote;
         try {
-            for (int i = 1; i < 5; i++) {
+            for (int i = 1; i < 6; i++) {
                 consumer.accept(i, userid);
-                Thread.sleep(2000);
+              //  Thread.sleep(2000);
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -49,7 +53,7 @@ public class MlymVote {
             UrlEncodedFormEntity uefEntity;
             CloseableHttpResponse response = null;
             try {
-                httppost.setHeader("x-forwarded-for", "114.114.113." + ip);
+                httppost.setHeader("x-forwarded-for", "114.112.116." + ip);
                 uefEntity = new UrlEncodedFormEntity(formparams, "UTF-8");
                 httppost.setEntity(uefEntity);
                 response = httpclient.execute(httppost);
@@ -67,7 +71,7 @@ public class MlymVote {
             e.printStackTrace();
         } catch (ParseException e) {
             e.printStackTrace();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             try {

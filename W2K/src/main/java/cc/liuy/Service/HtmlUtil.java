@@ -2,50 +2,36 @@ package cc.liuy.Service;
 
 
 
+import jdk.internal.util.xml.impl.Input;
+import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
+
 import java.io.FileWriter;
+import java.io.InputStream;
 
 public class HtmlUtil {
-   /* public static void main(String[] args) {
-        WebClient wc = new WebClient(BrowserVersion.getDefault());
-        wc.setJavaScriptEnabled(true); //启用JS解释器，默认为true
-        wc.setJavaScriptTimeout(100000);//设置JS执行的超时时间
-        wc.setCssEnabled(false); //禁用css支持
-        wc.setThrowExceptionOnScriptError(false); //js运行错误时，是否抛出异常
-        wc.setTimeout(10000); //设置连接超时时间 ，这里是10S。如果为0，则无限期等待
-        //wc.setWebConnection(
-
-        //		   new WebConnectionWrapper(wc) {
-        //		    public WebResponse getResponse(WebRequest request) throws IOException {
-        //		                 WebResponse response = super.getResponse(request);
-        //		                 if (request.getUrl().toExternalForm().contains("test.js")) {
-        //		                     String content = response.getContentAsString("GBK");
-        //		                     WebResponseData data = new WebResponseData(content.getBytes("UTF-8"),
-        //		                             response.getStatusCode(), response.getStatusMessage(), response.getResponseHeaders());
-        //		                     response = new WebResponse(data, request, response.getLoadTime());
-        //		                 }
-        //		                 return response;
-        //		             }
-        //		   }
-
-        //);
-
-        try {
-            //HtmlPage page = wc.getPage("http://192.168.0.1/Del_Bridge_Wan.html");
-            HtmlPage page = wc.getPage("http://localhost:8088/testWeb");
-            FileWriter fileWriter = new FileWriter("D:\\text.html");
-            System.out.println("over...");
-            String str = "";
-            //获取页面的XML代码
-            str = page.asXml();
-            fileWriter.write(str);
-            //关闭webclient
-            //wc.close();
-            wc.closeAllWindows();
-            fileWriter.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }*/
+    public static void main(String[] args) {
+        String path="https://blog.csdn.net/jackiehff/article/details/17765909";
+      try(CloseableHttpClient httpclient = HttpClients.createDefault()){
+          HttpGet  httpGet = new HttpGet(path);
+          httpGet.setHeader("Accept", "text/html,application/xhtml+xml," +
+                  "application/xml;q=0.9,image/webp,*/*;q=0.8");
+          httpGet.setHeader("Accept-Encoding", "gzip, deflate, sdch, br");
+          httpGet.setHeader("Accept-Language", "zh-CN,zh;q=0.8");
+          httpGet.setHeader("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36" +
+                  " (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36");
+          CloseableHttpResponse response =  httpclient.execute(httpGet);
+          HttpEntity entity =  response.getEntity();
+          String result = EntityUtils.toString(entity);
+          System.out.println(result);
+      }catch (Exception e){
+          e.printStackTrace();
+      }
+    }
 
 }

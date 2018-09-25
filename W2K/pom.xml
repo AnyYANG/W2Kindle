@@ -7,7 +7,7 @@
     <groupId>cc.liuy</groupId>
     <artifactId>w2k</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    <packaging>jar</packaging>
 
     <name>w2k</name>
     <description>w2k project for send HTML to kindle with wechat</description>
@@ -39,19 +39,12 @@
             <version>4.5.3</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-mail</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
-
-        <!-- https://mvnrepository.com/artifact/org.httpunit/httpunit -->
 
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -91,6 +84,18 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+
+        <resources>
+            <resource>
+                <directory>resources</directory>
+                <targetPath>${project.build.outputDirectory}</targetPath>
+                <includes>
+                    <include>application.properties</include>
+                </includes>
+            </resource>
+        </resources>
+
     </build>
+
 
 </project>
