@@ -12,6 +12,8 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -21,8 +23,10 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 @Service
+@Configuration
+@PropertySource("application.properties")
 public class MlymVote {
-  //  @Value("${path}")
+
     static String path="http://www.gjyunying.com/active/mlym/vote";
     public void voteConsumer(Long userid) {
         BiConsumer<Integer, Long> consumer = MlymVote::vote;
