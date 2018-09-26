@@ -22,14 +22,15 @@ import java.util.function.Consumer;
 
 @Service
 public class MlymVote {
-    @Value("${path}")
-    static String path;
+  //  @Value("${path}")
+    static String path="http://www.gjyunying.com/active/mlym/vote";
     public void voteConsumer(Long userid) {
         BiConsumer<Integer, Long> consumer = MlymVote::vote;
         try {
-            for (int i = 1; i < 5; i++) {
+            for (int i = 1; i < 52; i++) {
                 consumer.accept(i, userid);
-                Thread.sleep(2000);
+                //Thread.sleep(20000);
+                System.out.println("id"+userid+"："+i+"次");
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -49,7 +50,7 @@ public class MlymVote {
             UrlEncodedFormEntity uefEntity;
             CloseableHttpResponse response = null;
             try {
-                httppost.setHeader("x-forwarded-for", "114.114.113." + ip);
+                httppost.setHeader("x-forwarded-for", "114.114.115." + ip);
                 uefEntity = new UrlEncodedFormEntity(formparams, "UTF-8");
                 httppost.setEntity(uefEntity);
                 response = httpclient.execute(httppost);
@@ -67,7 +68,7 @@ public class MlymVote {
             e.printStackTrace();
         } catch (ParseException e) {
             e.printStackTrace();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             try {
