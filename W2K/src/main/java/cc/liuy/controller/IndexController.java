@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class IndexController {
 
-    @Value("${hello}")
+
     String str1;
-    @Value("${world}")
+
     String str2;
 
     @RequestMapping("/")
