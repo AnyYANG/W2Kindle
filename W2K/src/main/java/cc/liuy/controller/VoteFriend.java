@@ -13,14 +13,14 @@ public class VoteFriend {
     @Resource
     MlymVote mlymVote;
     @ResponseBody
-   // @RequestMapping("/votezjl")
+   @RequestMapping("/votezjl")
     public String votezjl() {
         mlymVote.voteConsumer(140815345463066624L);
         return "投票成功，两分钟后看结果";
     }
 
     @ResponseBody
-   // @RequestMapping("/votewts")
+    @RequestMapping("/votewts")
     public String votewts() {
         mlymVote.voteConsumer(149148251025571840L);
         return "投票成功，两分钟后看结果";

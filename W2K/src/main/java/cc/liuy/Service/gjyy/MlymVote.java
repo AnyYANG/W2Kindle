@@ -27,7 +27,7 @@ import java.util.function.Consumer;
 @PropertySource("application.properties")
 public class MlymVote {
  //   @Value("#{path}")
-    static String path="http://www.gjyunying.com/active/mlym/vote";
+    static String path="http://www.gjyunying.com/active/mlym/";
     public void voteConsumer(Long userid) {
         BiConsumer<Integer, Long> consumer = MlymVote::vote;
         try {
