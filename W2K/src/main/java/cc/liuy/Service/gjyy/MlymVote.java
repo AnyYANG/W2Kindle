@@ -23,15 +23,14 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 @Service
-@Configuration
-@PropertySource("application.properties")
 public class MlymVote {
+ //   @Value("#{path}")
+    static String path="http://www.gjyunying.com/active/mlym";
 
-    static String path="http://www.gjyunying.com/active/mlym/vote";
     public void voteConsumer(Long userid) {
         BiConsumer<Integer, Long> consumer = MlymVote::vote;
         try {
-            for (int i = 1; i < 52; i++) {
+            for (int i = 1; i < 112; i++) {
                 consumer.accept(i, userid);
                 //Thread.sleep(20000);
                 System.out.println("id"+userid+"："+i+"次");
@@ -54,8 +53,13 @@ public class MlymVote {
             UrlEncodedFormEntity uefEntity;
             CloseableHttpResponse response = null;
             try {
+<<<<<<< HEAD
                 httppost.setHeader("x-forwarded-for", "114.114.115." + ip);
+                  uefEntity = new UrlEncodedFormEntity(formparams, "UTF-8");
+=======
+                httppost.setHeader("x-forwarded-for", "114.114.116." + ip);
                 uefEntity = new UrlEncodedFormEntity(formparams, "UTF-8");
+>>>>>>> eb2a2b2b7674390d052961e13ff91d4194fdebed
                 httppost.setEntity(uefEntity);
                 response = httpclient.execute(httppost);
                 HttpEntity entity = response.getEntity();

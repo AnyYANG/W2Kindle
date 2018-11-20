@@ -6,7 +6,6 @@ package cc.liuy.bean.response;
  * cc.liuy.bean.response
  * All Right Reserved by liuyang.
  **/
-
 public class ImgMsg extends  BaseResoponMsg {
     // 图片
     private Image Image;
