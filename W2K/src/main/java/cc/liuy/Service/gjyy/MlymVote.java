@@ -54,9 +54,12 @@ public class MlymVote {
             CloseableHttpResponse response = null;
             try {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 httppost.setHeader("x-forwarded-for", "114.114.115." + ip);
                   uefEntity = new UrlEncodedFormEntity(formparams, "UTF-8");
 =======
+=======
+>>>>>>> eb2a2b2b7674390d052961e13ff91d4194fdebed
                 httppost.setHeader("x-forwarded-for", "114.114.116." + ip);
                 uefEntity = new UrlEncodedFormEntity(formparams, "UTF-8");
 >>>>>>> eb2a2b2b7674390d052961e13ff91d4194fdebed
